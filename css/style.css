@@ -24,15 +24,27 @@ li{
     margin-top: 20px;
 }
 
+figure {
+    padding: 5px;
+    background-color: blue;
+    border-radius: 0;
+}
+
 img{
-    border: 5px solid blue;
-    border-radius: 35px;
+    border: none;
+    border-radius: 30px;
     width: 100%;
-  }
+    object-fit: cover;
+    display: block;
+}
 
 .label{
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+figcaption{
+    text-align: center;
+    color: white;
 }
 
 .grid{
@@ -41,56 +53,94 @@ img{
     gap: 10px; 
 }
 
+@media screen and (min-width: 772px) {
+    
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .grid > figure {
+        position: relative;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .grid > figure img {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    @media (prefers-color-scheme: dark) {
+    
+    .grid > figure {
+        background-color: #000000;
+        color: #f0d020;
+    }
+    
+    figure {
+        background-color: black;
+    }
+    
+}
+    .grid > figure figcaption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: blue;
+        padding:8px;
+        margin: 0;
+        font-size: 0.5em;
+    }
+    
+    .grid > figure:last-child {
+        grid-column: span 2;
+    }
+    
+}
+
+
+@media screen and (min-width: 992px) {
+    
+    .grid > figure {
+        border-radius: 0;
+    }
+
+    .grid > figure img{
+        border-radius: 0;
+    }
+
+
+    .grid > figure:nth-child(3n) {
+        grid-column: span 2;
+    }
+    
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
-        scroll-behavior: none;
+        scroll-behavior: auto;
     }
 }
 
 @media (prefers-color-scheme: dark) {
     
     .grid > figure {
-        background-color: transparent;
-        color: #000000;
+        background-color: #000000;
+        color: #f0d020;
+    }
+
+    .grid > figure figcaption {
+        background-color: #000000;
+        color: rgb(255, 225, 137);
     }
     
-    .grid > figure .label {
-        color: #000000;
-    }
-    
-    .grid > figure img {
-        border: 5px solid black;    
+    figure {
+        background-color: black;
     }
     
 }
 
-@media screen and (min-width: 772px) {
-
-   .grid {
-       grid-template-columns: 1fr 1fr;
-       align-items: center;
-       
-   }
-
-   .grid > figure {
-       border-radius: 50%;
-   }
-
-   .grid > figure:last-child {
-       grid-column: span 2;
-   }
-
-}
-
-@media screen and (min-width: 992px) {
-
-   .grid > figure img, figcaption {
-       border-radius: 0;
-   }
-   
-   .grid > figure:nth-child(3n) {
-       grid-column: span 2;
-   }
-
-}
 
